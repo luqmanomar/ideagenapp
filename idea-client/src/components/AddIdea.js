@@ -2,20 +2,22 @@ import React, { Component } from "react";
 import IdeaDataService from "../services/idea.service";
 import { NavBar } from "./NavBar";
 import { Link } from "react-router-dom";
+import {AuthConsumer} from "../authContext";
 
 export default class AddIdea extends Component {
   constructor(props) {
     super(props);
     this.onChangeTitle = this.onChangeTitle.bind(this);
-    this.onChangeDescription = this.onChangeDescription.bind(this);
+    // this.onChangeDescription = this.onChangeDescription.bind(this);
+    this.onChangeUser = this.onChangeUser.bind(this);
     this.saveIdea = this.saveIdea.bind(this);
     this.newIdea = this.newIdea.bind(this);
 
     this.state = {
-      id: null,
+      id: "",
       title: "",
-      description: "", 
-
+      // description: "", 
+      user: "",
       submitted: false
     };
   }
@@ -26,16 +28,22 @@ export default class AddIdea extends Component {
     });
   }
 
-  onChangeDescription(e) {
+  // onChangeDescription(e) {
+  //   this.setState({
+  //     description: e.target.value
+  //   });
+  // }
+
+  onChangeUser(e) {
     this.setState({
-      description: e.target.value
+      user: e.target.value
     });
   }
 
   saveIdea() {
     var data = {
       title: this.state.title,
-      description: this.state.description
+      user: this.state.user
     };
 
     IdeaDataService.create(data)
@@ -43,7 +51,7 @@ export default class AddIdea extends Component {
         this.setState({
           id: response.data.id,
           title: response.data.title,
-          description: response.data.description,
+          user: response.data.user,
         //  status: response.data.NEW,
 
           submitted: true
@@ -57,9 +65,9 @@ export default class AddIdea extends Component {
 
   newIdea() {
     this.setState({
-      id: null,
+      id: "",
       title: "",
-      description: "",
+      user: "",
 
       submitted: false
     });
@@ -67,6 +75,8 @@ export default class AddIdea extends Component {
 
   render() {
     return (
+      <AuthConsumer>
+      {({user}) => (
       <React.Fragment><NavBar /><br></br>
         <div className="submit-form">
         <h4>Add Idea</h4>
@@ -96,15 +106,15 @@ export default class AddIdea extends Component {
               </div>
   
               <div className="form-group">
-                <label htmlFor="description">Description</label>
+                <label htmlFor="user">User</label>
                 <input
                   type="text"
                   className="form-control"
-                  id="description"
+                  id="user"
                   required
-                  value={this.state.description}
-                  onChange={this.onChangeDescription}
-                  name="description"
+                  value={user.id}
+                  onChange={this.onChangeUser}
+                  name="user"
                 />
               </div>
   
@@ -114,6 +124,8 @@ export default class AddIdea extends Component {
             </div>
           )}
         </div></React.Fragment>
+        )}
+        </AuthConsumer>
       );
     
   }
