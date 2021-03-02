@@ -12,6 +12,8 @@ export default class IdeaList extends Component {
     this.setActiveIdea = this.setActiveIdea.bind(this);
     this.removeAllIdeas = this.removeAllIdeas.bind(this);
     this.searchTitle = this.searchTitle.bind(this);
+    this.addVote = this.addVote.bind(this);
+    this.minusVote = this.minusVote.bind(this)
 
     this.state = {
       ideas: [],
@@ -126,6 +128,10 @@ export default class IdeaList extends Component {
       });
   }
 
+  refreshPage() {
+    window.location.reload(false);
+  }
+
   render() {
     const { searchTitle, ideas, currentIdea, currentIndex } = this.state;
    
@@ -188,16 +194,22 @@ export default class IdeaList extends Component {
                 </label>{" "}
                 {currentIdea.points}
               </div>
-              <div>
+              {/* <div>
                 <label>
                   <strong>Creator:</strong>
                 </label>{" "}
                 {currentIdea.user}
-              </div>
+              </div> */}
 
             <button  type="submit" className="badge badge-success" onClick={this.addVote}> Upvote </button>
             <button  type="submit" className="badge badge-danger" onClick={this.minusVote}> Downvote </button>
-
+            <p>{this.state.message}</p>
+              {/* <Link
+                to={"/ideas/vote/" + currentIdea.id}
+                className="badge badge-warning"
+              >
+                Vote
+              </Link> */}
             </div>
           ) : (
             <div>
