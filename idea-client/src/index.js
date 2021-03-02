@@ -10,9 +10,13 @@ import ContactPage from './pages/contact';
 import Auth from "./components/Auth";
 import Idea from "./components/Idea";
 import AddIdea from "./components/AddIdea";
-import IdeasList from "./components/IdeaList";
+import IdeaList from "./components/IdeaList";
 import Login from "./Login/Login";
 import Register from "./Register/Register";
+import UpdateProfile from './components/UpdateProfile';
+import AddProfile from './components/AddProfile';
+import UserProfile from './components/UserProfile';
+import CreateEvent from './components/CreateEvent';
 
 function App() {
   return (
@@ -26,12 +30,15 @@ function App() {
             <Route path="/register" component={Register}/>
             <Route path="/dashboard" component={DashboardPage}/>
             <Route path="/profile" component={ProfilePage}/>
+            <Route path="/userprofile" component={UserProfile}/>
             <Route path="/callback" component={CallbackPage}/>
-            {/* <Route exact path="/updateprofile" component={ProfileUpdate} /> */}
+            <Route exact path="/updateprofile" component={UpdateProfile} />
+            <Route exact path="/addprofile" component={AddProfile} />
+            <Route exact path="/createevent" component={CreateEvent} />
             <Route exact path="/contact" component={ContactPage} />
             <Route exact path="/add" component={AddIdea} />
             <Route path="/ideas/:id" component={Idea} />
-            <Route exact path="/ideas" component={IdeasList} />
+            <Route exact path="/ideas" component={IdeaList} />
           </Switch>
         </Router>
       </div>
