@@ -143,12 +143,12 @@ export default class IdeasListUser extends Component {
                 </label>{" "}
                 {currentIdea.points}
               </div>
-              <div>
+              {/* <div>
                 <label>
                   <strong>Creator:</strong>
                 </label>{" "}
                 {currentIdea.user}
-              </div>
+              </div> */}
               {/* <div>
                 <label>
                   <strong>Status:</strong>
