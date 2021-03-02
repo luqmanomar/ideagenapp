@@ -17,6 +17,7 @@ import UpdateProfile from './components/UpdateProfile';
 import AddProfile from './components/AddProfile';
 import UserProfile from './components/UserProfile';
 import CreateEvent from './components/CreateEvent';
+import Vote from './components/VoteIdea';
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
             <Route exact path="/contact" component={ContactPage} />
             <Route exact path="/add" component={AddIdea} />
             <Route path="/ideas/:id" component={Idea} />
+            <Route path="/ideas/vote/:id" component={Vote} />
             <Route exact path="/ideas" component={IdeaList} />
           </Switch>
         </Router>
