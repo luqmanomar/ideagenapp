@@ -3,7 +3,7 @@ import IdeaDataService from "../services/idea.service";
 import { Link } from "react-router-dom";
 import { NavBar } from "./NavBar";
 
-export default class IdeasList extends Component {
+export default class IdeaList extends Component {
   constructor(props) {
     super(props);
     this.onChangeSearchTitle = this.onChangeSearchTitle.bind(this);
@@ -14,8 +14,9 @@ export default class IdeasList extends Component {
     this.searchTitle = this.searchTitle.bind(this);
 
     this.state = {
-      tutorials: [],
-      currentIdea: null,
+      ideas: [],
+      points: null,
+      currentIdea: "",
       currentIndex: -1,
       searchTitle: ""
     };
@@ -30,6 +31,14 @@ export default class IdeasList extends Component {
 
     this.setState({
       searchTitle: searchTitle
+    });
+  }
+
+  onChangeVote(e) {
+    const points = e.target.value;
+
+    this.setState({
+      points: points
     });
   }
 
@@ -87,7 +96,8 @@ export default class IdeasList extends Component {
 
   addVote() {
     IdeaDataService.addVote(
-      this.state.currentIdea.id
+      this.state.currentIdea.id,
+      // this.state.currentIdea
     )
       .then(response => {
         console.log(response.data);
@@ -102,7 +112,8 @@ export default class IdeasList extends Component {
 
   minusVote() {
     IdeaDataService.minusVote(
-      this.state.currentIdea.id
+      this.state.currentIdea.id,
+      // this.state.currentIdea
     )
       .then(response => {
         console.log(response.data);
@@ -173,9 +184,9 @@ export default class IdeasList extends Component {
               </div>
               <div>
                 <label>
-                  <strong>Description:</strong>
+                  <strong>Points:</strong>
                 </label>{" "}
-                {currentIdea.description}
+                {currentIdea.points}
               </div>
               <div>
                 <label>
@@ -184,8 +195,8 @@ export default class IdeasList extends Component {
                 {currentIdea.user}
               </div>
 
-            <button className="badge badge-success" onClick={this.addVote}> Upvote </button>
-            <button className="badge badge-danger" onClick={this.minusVote}> Downvote </button>
+            <button  type="submit" className="badge badge-success" onClick={this.addVote}> Upvote </button>
+            <button  type="submit" className="badge badge-danger" onClick={this.minusVote}> Downvote </button>
 
             </div>
           ) : (
