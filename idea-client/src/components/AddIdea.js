@@ -105,7 +105,7 @@ export default class AddIdea extends Component {
                 />
               </div>
   
-              <div className="form-group">
+              {/* <div className="form-group">
                 <label htmlFor="user">User</label>
                 <input
                   type="text"
@@ -116,7 +116,7 @@ export default class AddIdea extends Component {
                   onChange={this.onChangeUser}
                   name="user"
                 />
-              </div>
+              </div> */}
   
               <button onClick={this.saveIdea} className="btn btn-success">
                 Submit
