@@ -6,7 +6,7 @@ export default class Idea extends Component {
   constructor(props) {
     super(props);
     this.onChangeTitle = this.onChangeTitle.bind(this);
-    this.onChangeDescription = this.onChangeDescription.bind(this);
+    //this.onChangeDescription = this.onChangeDescription.bind(this);
     this.getIdea = this.getIdea.bind(this);
     this.updateIdea = this.updateIdea.bind(this);
     this.deleteIdea = this.deleteIdea.bind(this);
@@ -15,7 +15,7 @@ export default class Idea extends Component {
       currentIdea: {
         id: null,
         title: "",
-        description: "",
+        //description: "",
         creator: "",
       },
       message: ""
@@ -39,16 +39,16 @@ export default class Idea extends Component {
     });
   }
 
-  onChangeDescription(e) {
-    const description = e.target.value;
+  // onChangeDescription(e) {
+  //   const description = e.target.value;
     
-    this.setState(prevState => ({
-      currentIdea: {
-        ...prevState.currentIdea,
-        description: description
-      }
-    }));
-  }
+  //   this.setState(prevState => ({
+  //     currentIdea: {
+  //       ...prevState.currentIdea,
+  //       description: description
+  //     }
+  //   }));
+  // }
 
   getIdea(id) {
     IdeaDataService.get(id)
@@ -111,7 +111,7 @@ export default class Idea extends Component {
                   onChange={this.onChangeTitle}
                 />
               </div>
-              <div className="form-group">
+              {/* <div className="form-group">
                 <label htmlFor="description">Description</label>
                 <input
                   type="text"
@@ -120,7 +120,7 @@ export default class Idea extends Component {
                   value={currentIdea.description}
                   onChange={this.onChangeDescription}
                 />
-              </div>
+              </div> */}
 
               </form>
 
