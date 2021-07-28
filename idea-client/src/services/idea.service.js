@@ -30,11 +30,11 @@ class IdeaDataService {
   }
 
   addVote(id) {
-    return http.post(`/idea/${id}/addVote`)
+    return http.put(`/idea/${id}/addVote`)
   }
 
   minusVote(id) {
-    return http.post(`/idea/${id}/minusVote`)
+    return http.put(`/idea/${id}/minusVote`)
   }
 }
 

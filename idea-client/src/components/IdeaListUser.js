@@ -14,7 +14,7 @@ export default class IdeasListUser extends Component {
 
     this.state = {
       // tutorials: [],
-      currentIdea: null,
+      currentIdea: "",
       currentIndex: -1,
       searchTitle: ""
     };
@@ -139,16 +139,16 @@ export default class IdeasListUser extends Component {
               </div>
               <div>
                 <label>
-                  <strong>Description:</strong>
+                  <strong>Points:</strong>
                 </label>{" "}
-                {currentIdea.description}
+                {currentIdea.points}
               </div>
-              <div>
+              {/* <div>
                 <label>
                   <strong>Creator:</strong>
                 </label>{" "}
                 {currentIdea.user}
-              </div>
+              </div> */}
               {/* <div>
                 <label>
                   <strong>Status:</strong>

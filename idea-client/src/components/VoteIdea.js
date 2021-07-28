@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import IdeaDataService from "../services/idea.service";
 import { NavBar } from "./NavBar";
 
-export default class Idea extends Component {
+export default class Vote extends Component {
   constructor(props) {
     super(props);
     this.onChangeTitle = this.onChangeTitle.bind(this);
